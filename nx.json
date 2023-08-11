@@ -5,7 +5,7 @@
   "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx-cloud",
+      "runner": "mock-remote-cache",
       "options": {
         "accessToken": "YmM1MGMwMTUtNzAyYi00ZjM4LWExNGUtZDM2ZjYyNzNiODAxfHJlYWQ=",
         "cacheableOperations": ["build", "lint", "test"],

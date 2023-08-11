@@ -1,0 +1,25 @@
+name: NX Cache Integrity Reproducer Build
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      name: Cache Dependencies
+      with:
+        path: |
+          .mock-cache
+        key: ${{ runner.os }}-mock-cache-${{ hashFiles('libs/**/*.ts') }}
+        restore-keys: |
+          ${{ runner.os }}-mock-cache-
+    - uses: actions/setup-node@v3
+    - run: yarn install
+    - name: Build
+      run: yarn build
